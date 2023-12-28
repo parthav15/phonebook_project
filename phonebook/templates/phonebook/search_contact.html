@@ -1,0 +1,23 @@
+{% extends 'phonebook/base.html' %}
+
+{% block title %}Search Contact{% endblock %}
+
+{% block content %}
+    <h2>Search Contact</h2>
+    <form method="get">
+        <input type="text" name="q" placeholder="Search by name" />
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <h3>Results for '{{ query }}'</h3>
+        <ul>
+            {% for result in results %}
+                <li>{{ result.name }} - {{ result.phone_number }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'contact_list' %}">Back to Contact List</a>
+{% endblock %}

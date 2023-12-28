@@ -1,0 +1,15 @@
+{% extends 'phonebook/base.html' %}
+
+{% block title %}Contact List{% endblock %}
+
+{% block content %}
+    <h2>Contact List</h2>
+    <ul>
+        {% for contact in contacts %}
+            <li>{{ contact.name }} - {{ contact.phone_number }} | 
+                <a href="{% url 'edit_contact' pk=contact.pk %}">Edit</a> |
+                <a href="{% url 'delete_contact' pk=contact.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
